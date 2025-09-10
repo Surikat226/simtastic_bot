@@ -1,5 +1,3 @@
-import time
-
 from aiogram import types, Router, F
 from aiogram.fsm.context import FSMContext
 from aiohttp import ClientSession
@@ -42,6 +40,7 @@ async def live_location_updates(message: types.Message):
             url=f"{GEO_SERVICE_URL}/coordinates",
             json={
                 "user_id": message.from_user.id,
+                "user_name": message.from_user.username,
                 "latitude": loc.latitude,
                 "longitude": loc.longitude,
                 "timestamp": message.date.isoformat()
